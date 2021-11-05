@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+
+    <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <h2 class="text-center">{{ cat.name }}</h2>
+            <div class="row mt-5">
+                <div class="col-lg-12 order-1 order-lg-2">
+                    <div class="row">
+
+                        {% for s in sub %}  
+                        <div class="col-lg-4 col-sm-4">
+                            <div class="blog-item">
+                                <div class="bi-pic">
+                                    <img src="{{ s.image.url }}" alt="">
+                                </div>
+                                <div class="bi-text">
+                                    <a href="{% url 'category_detail' pk=s.id %}">
+                                        <h5>{{ s.title }}</h5>
+                                    </a>
+                                    <p>Code - {{ s.course_code }} <span>- {{ s.category }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
+{% endblock %}
